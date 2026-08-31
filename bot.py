@@ -25,7 +25,7 @@ async def hello(ctx):
 
 @bot.command()   
 async def roll (ctx):
-    await ctx.send(f"Your random number is: {random.randint(1, 100)}")
+    await ctx.reply(f"Your random number is: {random.randint(1, 100)}")
 
 
 bot.run(os.getenv("DISCORD_TOKEN"))
