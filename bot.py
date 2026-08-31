@@ -1,5 +1,7 @@
 import os
 import discord
+import random
+
 from discord.ext import commands
 from dotenv import load_dotenv
 
@@ -19,6 +21,11 @@ async def on_ready():
 @bot.command()
 async def hello(ctx):
     await ctx.send("Everything is connected!")
+
+
+@bot.command()   
+async def roll (ctx):
+    await ctx.send(f"Your random number is: {random.randint(1, 100)}")
 
 
 bot.run(os.getenv("DISCORD_TOKEN"))
