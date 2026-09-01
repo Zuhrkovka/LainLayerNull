@@ -28,4 +28,10 @@ async def roll (ctx):
     await ctx.reply(f"Your random number is: {random.randint(1, 100)}")
 
 
+@bot.command()
+async def help(ctx):
+    await ctx.send("""!hello = Everything is connected
+                    !roll = throws a dice""")
+
+
 bot.run(os.getenv("DISCORD_TOKEN"))
