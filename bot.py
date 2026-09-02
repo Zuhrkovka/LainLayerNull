@@ -20,7 +20,7 @@ async def on_ready():
 
 @bot.command()
 async def hello(ctx):
-    await ctx.send("Everything is connected!")
+    await ctx.reply("Everything is connected!")
 
 
 @bot.command()   
@@ -33,5 +33,18 @@ async def help(ctx):
     await ctx.send("""!hello = Everything is connected
                     !roll = throws a dice""")
 
+
+@bot.command()
+async def wc(ctx,  *,
+message):
+    characters = len(message)
+    words = len(message.split())
+    lines = len(message.splitlines())
+
+    await ctx.reply(
+        f"Characters: {characters}\n"
+           f"Words:  {words} \n"
+              f"Lines:  {lines}"
+        )
 
 bot.run(os.getenv("DISCORD_TOKEN"))
