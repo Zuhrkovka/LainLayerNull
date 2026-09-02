@@ -31,7 +31,8 @@ async def roll (ctx):
 @bot.command()
 async def help(ctx):
     await ctx.send("""!hello = Everything is connected
-                    !roll = throws a dice""")
+                            !roll = throws a dice
+                                  !wc = counts numbers and line output""")
 
 
 @bot.command()
