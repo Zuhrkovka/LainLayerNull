@@ -48,4 +48,69 @@ message):
               f"Lines:  {lines}"
         )
 
+@bot.command()
+async def dice(ctx):
+    first_roll = random.randint(1, 6)
+
+    await ctx.reply(
+           f"i rolled a **{first_roll}**.\n"
+                           "will the next roll be **lower** or **higher**?"
+       )
+
+    def check(message):
+        return
+message.author ==
+ctx.author and
+message.channel ==
+ctx.channel
+
+     try:
+          answer = await
+bot.wait_for("message",
+             check=check, timeout=30)
+
+          answer =
+answer.content.lower().str
+ip()
+
+          if answer not in
+["lower", "higher"]:
+           await 
+ctx.reply("You need to answer **lower** or **higher**.") 
+
+return
+
+           second_roll =
+random.randint(1, 6)
+
+        if second_roll ==
+first_roll:
+            result = "It´s the same number! You lose."
+
+        elif answer == 
+"higher" and second_roll <
+first roll:
+
+            result = "you guessed correctly! **you win!**"
+
+        elif answer == 
+        "lower" and second_roll <
+        first roll:
+        
+                    result = "you guessed correctly! **you win!**"
+
+        else:
+            result = "Wrong guess! **You lose!**"
+
+                      await ctx.reply(
+                             f"The second roll is **{second_roll}**.
+                             \n {result}"
+                      )
+        
+              except TimeoutError:
+                  await
+ctx.reply("you took too long to answer.")
+
+
+
 bot.run(os.getenv("DISCORD_TOKEN"))
