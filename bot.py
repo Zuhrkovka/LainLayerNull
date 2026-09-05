@@ -29,6 +29,11 @@ async def roll (ctx):
 
 
 @bot.command()
+async def help(ctx):
+    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game")
+
+
+@bot.command()
 async def dice(ctx):
     first_roll = random.randint(1, 6)
 
