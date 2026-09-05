@@ -34,6 +34,12 @@ async def help(ctx):
 
 
 @bot.command()
+async def coin(ctx):
+    coin_flip = random.choice(["Heads", "Tails"])
+    await ctx.reply(f"The coin landed on: **{coin_flip}**")
+
+
+@bot.command()
 async def dice(ctx):
     first_roll = random.randint(1, 6)
 
