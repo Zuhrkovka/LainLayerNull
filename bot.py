@@ -32,7 +32,8 @@ async def roll (ctx):
 async def help(ctx):
     await ctx.send("""!hello = Everything is connected
                             !roll = throws a dice
-                                  !wc = counts numbers and line output""")
+                                  !wc = counts numbers and line output
+                                       !dice = throws a dice and you have to guess if the next number is higher or lower""")
 
 
 @bot.command()
@@ -53,64 +54,42 @@ async def dice(ctx):
     first_roll = random.randint(1, 6)
 
     await ctx.reply(
-           f"i rolled a **{first_roll}**.\n"
-                           "will the next roll be **lower** or **higher**?"
-       )
+        f"I rolled a **{first_roll}**.\n"
+        "Will the next roll be **lower** or **higher**?"
+    )
 
     def check(message):
-        return
-message.author ==
-ctx.author and
-message.channel ==
-ctx.channel
+        return message.author == ctx.author and message.channel == ctx.channel
 
-     try:
-          answer = await
-bot.wait_for("message",
-             check=check, timeout=30)
+    try:
+        answer = await bot.wait_for("message", check=check, timeout=30)
 
-          answer =
-answer.content.lower().str
-ip()
+        answer = answer.content.lower().strip()
 
-          if answer not in
-["lower", "higher"]:
-           await 
-ctx.reply("You need to answer **lower** or **higher**.") 
+        if answer not in ["lower", "higher"]:
+            await ctx.reply("You need to answer **lower** or **higher**.")
+            return
 
-return
+        second_roll = random.randint(1, 6)
 
-           second_roll =
-random.randint(1, 6)
+        if second_roll == first_roll:
+            result = "It's the same number! You lose."
 
-        if second_roll ==
-first_roll:
-            result = "It´s the same number! You lose."
+        elif answer == "higher" and second_roll > first_roll:
+            result = "You guessed correctly! **You win!**"
 
-        elif answer == 
-"higher" and second_roll <
-first roll:
-
-            result = "you guessed correctly! **you win!**"
-
-        elif answer == 
-        "lower" and second_roll <
-        first roll:
-        
-                    result = "you guessed correctly! **you win!**"
+        elif answer == "lower" and second_roll < first_roll:
+            result = "You guessed correctly! **You win!**"
 
         else:
             result = "Wrong guess! **You lose!**"
 
-                      await ctx.reply(
-                             f"The second roll is **{second_roll}**.
-                             \n {result}"
-                      )
-        
-              except TimeoutError:
-                  await
-ctx.reply("you took too long to answer.")
+        await ctx.reply(
+            f"The second roll is **{second_roll}**.\n{result}"
+        )
 
+    except TimeoutError:
+        await ctx.reply("You took too long to answer.")
 
 
 bot.run(os.getenv("DISCORD_TOKEN"))
