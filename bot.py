@@ -10,7 +10,7 @@ load_dotenv()
 intents = discord.Intents.default()
 intents.message_content = True
 
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
 
 @bot.event
@@ -23,14 +23,14 @@ async def hello(ctx):
     await ctx.reply("Everything is connected!")
 
 
-@bot.command()   
-async def roll (ctx):
+@bot.command()
+async def roll(ctx):
     await ctx.reply(f"Your random number is: {random.randint(1, 100)}")
 
 
 @bot.command()
 async def help(ctx):
-    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game")
+    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game\n- `!kiss @member`: Kiss a member\n- `!hug @member`: Hug a member")
 
 
 @bot.command()
@@ -80,6 +80,64 @@ async def dice(ctx):
 
     except TimeoutError:
         await ctx.reply("You took too long to answer.")
+
+
+kiss_gif = [
+    "gifs/kiss/giphy.gif",
+    "gifs/kiss/giphy2.gif",
+    "gifs/kiss/giphy3.gif",
+    "gifs/kiss/giphy4.gif",
+    "gifs/kiss/giphy5.gif",
+    "gifs/kiss/giphy6.gif",
+    "gifs/kiss/giphy7.gif",
+    "gifs/kiss/giphy8.gif",
+    "gifs/kiss/giphy9.gif",
+    "gifs/kiss/giphy10.gif",
+]
+hug_gif = [
+    "gifs/hug/giphy(1).gif",
+    "gifs/hug/giphy2h.gif",
+    "gifs/hug/giphy3h.gif",
+    "gifs/hug/giphy4h.gif",
+    "gifs/hug/giphy5h.gif",
+    "gifs/hug/giphy6h.gif",
+    "gifs/hug/giphy7h.gif",
+    "gifs/hug/giphy8h.gif",
+    "gifs/hug/giphy9h.gif",
+    "gifs/hug/giphy10h.gif",
+]
+
+
+@bot.command()
+async def kiss(ctx, member: discord.Member):
+    gif = random.choice(kiss_gif)
+
+    await ctx.reply(
+        f"{ctx.author.mention} kissed {member.mention} 💋",
+        file=discord.File(gif)
+    )
+
+
+@bot.command()
+async def hug(ctx, member: discord.Member):
+    gif = random.choice(hug_gif)
+
+    await ctx.reply(
+        f"{ctx.author.mention} hugged {member.mention}",
+        file=discord.File(gif)
+    )
+
+
+@kiss.error
+async def kiss_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.reply("You need to mention a member to kiss.")
+
+
+@hug.error
+async def hug_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.reply("You need to mention a member to hug.")
 
 
 bot.run(os.getenv("DISCORD_TOKEN"))
