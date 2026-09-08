@@ -30,7 +30,7 @@ async def roll(ctx):
 
 @bot.command()
 async def help(ctx):
-    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game\n- `!kiss @member`: Kiss a member\n- `!hug @member`: Hug a member \n- `!slapped @member`: Slap a member")
+    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game\n- `!kiss @member`: Kiss a member\n- `!hug @member`: Hug a member \n- `!slap @member`: Slap a member")
 
 
 @bot.command()
@@ -137,7 +137,7 @@ async def hug(ctx, member: discord.Member):
 
 
 @bot.command()
-async def slapped(ctx, member: discord.Member):
+async def slap(ctx, member: discord.Member):
     gif = random.choice(slap_gif)
 
     await ctx.reply(
@@ -158,7 +158,7 @@ async def hug_error(ctx, error):
         await ctx.reply("You need to mention a member to hug.")
 
 
-@slapped.error
+@slap.error
 async def slapped_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.reply("You need to mention a member to slap.")
