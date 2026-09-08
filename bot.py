@@ -30,7 +30,7 @@ async def roll(ctx):
 
 @bot.command()
 async def help(ctx):
-    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game\n- `!kiss @member`: Kiss a member\n- `!hug @member`: Hug a member")
+    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game\n- `!kiss @member`: Kiss a member\n- `!hug @member`: Hug a member \n- `!slapped @member`: Slap a member")
 
 
 @bot.command()
@@ -106,6 +106,14 @@ hug_gif = [
     "gifs/hug/giphy9h.gif",
     "gifs/hug/giphy10h.gif",
 ]
+slap_gif = [
+    "gifs/slap/giphy1s.gif",
+    "gifs/slap/giphy2s.gif",
+    "gifs/slap/giphy3s.gif",
+    "gifs/slap/giphy4s.gif",
+    "gifs/slap/giphy5s.gif",
+
+]
 
 
 @bot.command()
@@ -128,6 +136,16 @@ async def hug(ctx, member: discord.Member):
     )
 
 
+@bot.command()
+async def slapped(ctx, member: discord.Member):
+    gif = random.choice(slap_gif)
+
+    await ctx.reply(
+        f"{ctx.author.mention} slapped {member.mention}",
+        file=discord.File(gif)
+    )
+
+
 @kiss.error
 async def kiss_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
@@ -138,6 +156,12 @@ async def kiss_error(ctx, error):
 async def hug_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.reply("You need to mention a member to hug.")
+
+
+@slapped.error
+async def slapped_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.reply("You need to mention a member to slap.")
 
 
 bot.run(os.getenv("DISCORD_TOKEN"))
