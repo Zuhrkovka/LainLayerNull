@@ -12,6 +12,20 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
+# User who is banned from using !slap — gets roasted instead if he tries.
+BASSUS_ID = 709851355371536454
+
+BASSUS_ROASTS = [
+    "Nice try, bassus. You don't get to slap people.",
+    "Denied. grow some hair on your forehead.",
+    "bassus, sit down. The last thing you should be swinging is your ass out of this conversation.",
+    "Not happening, bassus. This command has higher standards than your dad in the gay club.",
+    "bassus trying to slap someone is like a Roomba trying to headbutt a wall — pointless and slightly sad.",
+    "Access denied. bassus's slap privileges were repossessed, like his dignity.",
+    "You really thought you'd get to slap someone, bassus? Adorable.",
+    "bassus, the bot has more self-respect than to let you touch this command.",
+]
+
 
 @bot.event
 async def on_ready():
@@ -112,7 +126,6 @@ slap_gif = [
     "gifs/slap/giphy3s.gif",
     "gifs/slap/giphy4s.gif",
     "gifs/slap/giphy5s.gif",
-
 ]
 
 
@@ -138,6 +151,10 @@ async def hug(ctx, member: discord.Member):
 
 @bot.command()
 async def slap(ctx, member: discord.Member):
+    if ctx.author.id == BASSUS_ID:
+        await ctx.reply(random.choice(BASSUS_ROASTS))
+        return
+
     gif = random.choice(slap_gif)
 
     await ctx.reply(
@@ -159,9 +176,12 @@ async def hug_error(ctx, error):
 
 
 @slap.error
-async def slapped_error(ctx, error):
+async def slap_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.reply("You need to mention a member to slap.")
+        if ctx.author.id == BASSUS_ID:
+            await ctx.reply(random.choice(BASSUS_ROASTS))
+        else:
+            await ctx.reply("You need to mention a member to slap.")
 
 
 bot.run(os.getenv("DISCORD_TOKEN"))
