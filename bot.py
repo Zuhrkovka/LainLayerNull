@@ -12,8 +12,8 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix="!", intents=intents, help_command=None)
 
-# User who is banned from using !slap — gets roasted instead if he tries.
-BASSUS_ID = 709851355371536454
+
+USER_ID = 709851355371536454
 
 BASSUS_ROASTS = [
     "Nice try, bassus. You don't get to slap people.",
@@ -151,7 +151,7 @@ async def hug(ctx, member: discord.Member):
 
 @bot.command()
 async def slap(ctx, member: discord.Member):
-    if ctx.author.id == BASSUS_ID:
+    if ctx.author.id == USER_ID:
         await ctx.reply(random.choice(BASSUS_ROASTS))
         return
 
@@ -178,7 +178,7 @@ async def hug_error(ctx, error):
 @slap.error
 async def slap_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
-        if ctx.author.id == BASSUS_ID:
+        if ctx.author.id == USER_ID:
             await ctx.reply(random.choice(BASSUS_ROASTS))
         else:
             await ctx.reply("You need to mention a member to slap.")
