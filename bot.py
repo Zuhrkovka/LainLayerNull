@@ -38,6 +38,11 @@ async def hello(ctx):
 
 
 @bot.command()
+async def sixtyfour(ctx):
+    await ctx.reply("64")
+
+
+@bot.command()
 async def roll(ctx):
     await ctx.reply(f"Your random number is: {random.randint(1, 100)}")
 
