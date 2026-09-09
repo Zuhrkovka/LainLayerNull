@@ -184,4 +184,15 @@ async def slap_error(ctx, error):
             await ctx.reply("You need to mention a member to slap.")
 
 
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.reply("Unknown command. Use `!help` to see the list of available commands.")
+    else:
+        await ctx.reply(f"An error occurred: {str(error)}")
+
+
+
+
+
 bot.run(os.getenv("DISCORD_TOKEN"))
