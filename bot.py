@@ -49,7 +49,7 @@ async def roll(ctx):
 
 @bot.command()
 async def help(ctx):
-    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game\n- `!kiss @member`: Kiss a member\n- `!hug @member`: Hug a member \n- `!slap @member`: Slap a member")
+    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game\n- `!kiss @member`: Kiss a member\n- `!hug @member`: Hug a member \n- `!slap @member`: Slap a member\ n- `!info`: Get information about the bot")
 
 
 @bot.command()
@@ -202,7 +202,7 @@ async def on_command_error(ctx, error):
 async def info(ctx):
     embed = discord.Embed(
         title="Bot Information",
-        description="This bot was created to provide fun commands and interactions.",
+        description="This bot was created by Mia. It is currently running version 1.3.25.",
         color=discord.Color.blue()
     )
     embed.add_field(name="Author", value="Mia", inline=False)
@@ -211,9 +211,6 @@ async def info(ctx):
     embed.set_footer(text="I AM GOD!")
 
     await ctx.reply(embed=embed)
-
-
-
 
 
 
