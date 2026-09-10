@@ -38,8 +38,8 @@ async def hello(ctx):
 
 
 @bot.command()
-async def sixtyfour(ctx):
-    await ctx.reply("64")
+async def ninetyfour(ctx):
+    await ctx.reply("94")
 
 
 @bot.command()
