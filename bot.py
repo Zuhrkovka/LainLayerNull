@@ -213,11 +213,6 @@ async def info(ctx):
     await ctx.reply(embed=embed)
 
 
-@bot.command()
-async def default(ctx):
-    await ctx.reply("This is the default command. Use `!help` to see the list of available commands and their usage.")
-
-
 
 
 bot.run(os.getenv("DISCORD_TOKEN"))
