@@ -202,7 +202,7 @@ async def on_command_error(ctx, error):
 async def info(ctx):
     embed = discord.Embed(
         title="Bot Information",
-        description="This bot was created by Mia. It is currently running version 1.3.25.",
+        description="This bot was created by Mia. It is currently running version 1.3.6.",
         color=discord.Color.blue()
     )
     embed.add_field(name="Author", value="Mia", inline=False)
@@ -212,6 +212,10 @@ async def info(ctx):
 
     await ctx.reply(embed=embed)
 
+
+@bot.command()
+async def default(ctx):
+    await ctx.reply("This is the default command. Use `!help` to see the list of available commands and their usage.")
 
 
 
