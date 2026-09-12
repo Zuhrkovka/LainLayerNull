@@ -206,9 +206,9 @@ async def info(ctx):
         color=discord.Color.blue()
     )
     embed.add_field(name="Author", value="Mia", inline=False)
-    embed.add_field(name="Version", value="1.3.25", inline=False)
+    embed.add_field(name="Version", value="1.3.6", inline=False)
     embed.add_field(name="Commands", value="!hello, !roll, !coin, !dice, !kiss, !hug, !slap, !info", inline=False)
-    embed.set_footer(text="I AM GOD!")
+    embed.set_footer(text="I AM THE WIRED!")
 
     await ctx.reply(embed=embed)
 
