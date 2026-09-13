@@ -38,8 +38,8 @@ async def hello(ctx):
 
 
 @bot.command()
-async def ninetyfour(ctx):
-    await ctx.reply("94")
+async def ninetysix(ctx):
+    await ctx.reply("96")
 
 
 @bot.command()
@@ -49,7 +49,7 @@ async def roll(ctx):
 
 @bot.command()
 async def help(ctx):
-    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game\n- `!kiss @member`: Kiss a member\n- `!hug @member`: Hug a member \n- `!slap @member`: Slap a member\ n- `!info`: Get information about the bot")
+    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!ninetysix`: Get the number 96\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game\n- `!kiss @member`: Kiss a member\n- `!hug @member`: Hug a member \n- `!slap @member`: Slap a member\ n- `!info`: Get information about the bot")
 
 
 @bot.command()
