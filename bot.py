@@ -212,6 +212,18 @@ async def info(ctx):
 
     await ctx.reply(embed=embed)
 
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    if message.content.lower() == "Lain":
+        await message.channel.send("""And you don't seem to understand
+A shame, you seemed an honest man
+And all the fears you hold so dear
+Will turn to whisper in your ear""")
+
+    await bot.process_commands(message)
 
 
 
