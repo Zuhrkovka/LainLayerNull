@@ -49,7 +49,7 @@ async def roll(ctx):
 
 @bot.command()
 async def help(ctx):
-    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!ninetysix`: Get the number 96\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game\n- `!kiss @member`: Kiss a member\n- `!hug @member`: Hug a member \n- `!slap @member`: Slap a member\ n- `!info`: Get information about the bot")
+    await ctx.reply("Here are the commands you can use:\n- `!hello`: Say hello to the bot\n- `!ninetysix`: Get the number 96\n- `!roll`: Roll a random number between 1 and 100\n- `!coin`: Flip a coin\n- `!dice`: Play a dice game\n- `!kiss @member`: Kiss a member\n- `!hug @member`: Hug a member \n- `!slap @member`: Slap a member\ n- `!info`: Get information about the bot" )
 
 
 @bot.command()
@@ -217,13 +217,14 @@ async def on_message(message):
     if message.author == bot.user:
         return
 
-    if message.content.lower() == "Lain":
-        await message.channel.send("""And you don't seem to understand
+@bot.command()
+async def lain(ctx):
+    await ctx.reply("""And you don't seem to understand
 A shame, you seemed an honest man
 And all the fears you hold so dear
 Will turn to whisper in your ear""")
 
-    await bot.process_commands(message)
+   
 
 
 
